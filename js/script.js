@@ -23,16 +23,20 @@ btn.addEventListener('click', function() {
     for (let i = 0; i < total_cells; i++) {
         // Creo un singolo quadrato funzione create_square
         let current_square = create_square(i + 1);
-        // Aggiungo l'evento click al quadrato
-        current_square.addEventListener('click',function(){
-            //Quando cliccata diventa azzurra e mostra il numero in console
-            console.log(this.innerText);
-            this.classList.toggle('clicked-lightblue')
+        current_square.addEventListener('click', function() {
+            // Se la partita è terminata, non fare nulla
+            if (game_end) return;
+            // Quando cliccata, se è una bomba, termina la partita
+            if (bombs.includes(i)) {
+                this.classList.add('bomb');
+                alert(`Hai calpestato una bomba! Hai perso! Punteggio: ${score}`);
+                game_end = true;
+            }
         })
-    //Metto il numero progressivo al quadrato
-    current_square.innerText = i + 1;
-    //Appendo il quadrato creato nella griglia
-    grid.append(current_square);
+        // Metto il numero progressivo al quadrato
+        current_square.innerText = i + 1;
+        // Appendo il quadrato creato nella griglia
+        grid.append(current_square);
     }
 })
 
