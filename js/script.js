@@ -1,24 +1,16 @@
-//Recupero il pulsante dal dom
+// Recupero il pulsante dal dom
 const btn = document.getElementById('btn-start');
 
-//Recupero l'elemento della griglia
+// Recupero l'elemento della griglia
 const grid = document.getElementById('grid');
 const total_cells = 100;
 
-//Devo generare 16 bombe e inserirle nei quadrati in modo randomico
+// Devo generare 16 bombe e inserirle nei quadrati in modo randomico
 const max_bombs = 16;
-const bombs = [];
+let bombs = [];
+let score = 0;
+let game_end = false;
 
-//Funzione delle bombe
-function generate_bombs() {
-    while (bombs.length < max_bombs) {
-        const bombs_position = Math.floor(Math.random() * total_cells);
-        if (bombs.includes(bombs_position)) {
-            bombs.push(bombs_position);
-        }
-    }
-    return bombs;
-}
 
 //Assegno l'evento click al pulsante recuperato nel dom 
 btn.addEventListener('click', function(){
@@ -40,15 +32,27 @@ btn.addEventListener('click', function(){
     }
 })
 
-//Definisco la funzione che mi crea i quadrati nella griglia
-function create_square(){
+// Definisco la funzione che mi crea i quadrati nella griglia
+function create_square(number) {
     let current_element = document.createElement('div');
-    //Assegnazione della classe square all'elemento creato
-    current_element.classList.add('square')
-    //restituisco il quadrato nella variabile current element
+    // Assegnazione della classe square all'elemento creato
+    current_element.classList.add('square');
+    current_element.innerText = number;
+    // Restituisco il quadrato nella variabile current_element
     return current_element;
 }
 
+// Funzione delle bombe
+function generate_bombs() {
+    const bombs = [];
+    while (bombs.length < max_bombs) {
+        const bomb_position = Math.floor(Math.random() * total_cells);
+        if (!bombs.includes(bomb_position)) {
+            bombs.push(bomb_position);
+        }
+    }
+    return bombs;
+}
 
 
 
