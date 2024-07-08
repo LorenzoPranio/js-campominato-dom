@@ -19,6 +19,7 @@ btn.addEventListener('click', function() {
     score = 0;
     game_end = false;
     bombs = generate_bombs();
+    console.log(bombs)
     // Eseguo un ciclo for per la griglia 10x10
     for (let i = 0; i < total_cells; i++) {
         // Creo un singolo quadrato funzione create_square
@@ -66,7 +67,7 @@ function create_square(number) {
 function generate_bombs() {
     const bombs = [];
     while (bombs.length < max_bombs) {
-        const bomb_position = Math.floor(Math.random() * total_cells);
+        const bomb_position = Math.floor(Math.random() * total_cells + 1);
         if (!bombs.includes(bomb_position)) {
             bombs.push(bomb_position);
         }
