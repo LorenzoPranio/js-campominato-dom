@@ -12,14 +12,18 @@ let score = 0;
 let game_end = false;
 
 
-//Assegno l'evento click al pulsante recuperato nel dom 
-btn.addEventListener('click', function(){
+// Assegno l'evento click al pulsante recuperato nel dom 
+btn.addEventListener('click', function() {
     grid.innerHTML = "";
-    //Eseguo un ciclo for per la grglia 10x10
-    for (let i = 0; i < 100; i++){
-        //Creo un singolo quadrato funzione createsquare
-        let current_square = create_square();
-        //Aggiungo l'evento click al quadrato
+    // Aggiungo le nuove variabili
+    score = 0;
+    game_end = false;
+    bombs = generate_bombs();
+    // Eseguo un ciclo for per la griglia 10x10
+    for (let i = 0; i < total_cells; i++) {
+        // Creo un singolo quadrato funzione create_square
+        let current_square = create_square(i + 1);
+        // Aggiungo l'evento click al quadrato
         current_square.addEventListener('click',function(){
             //Quando cliccata diventa azzurra e mostra il numero in console
             console.log(this.innerText);
