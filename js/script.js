@@ -32,6 +32,18 @@ btn.addEventListener('click', function() {
                 alert(`Hai calpestato una bomba! Hai perso! Punteggio: ${score}`);
                 game_end = true;
             }
+            else {
+                // Altrimenti, diventa azzurra e mostra il numero in console
+                if (!this.classList.contains('clicked-lightblue')) {
+                    this.classList.add('clicked-lightblue');
+                    score++;
+                    // Se tutte le celle sicure sono state cliccate, il giocatore vince
+                    if (score === total_cells - max_bombs) {
+                        alert(`Hai vinto la partita! Punteggio: ${score}`);
+                        game_end = true;
+                    }
+                }
+            }
         })
         // Metto il numero progressivo al quadrato
         current_square.innerText = i + 1;
