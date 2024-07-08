@@ -25,3 +25,25 @@ Le validazioni e i controlli possiamo farli anche in un secondo momento.
 
 
 |SOLUZIONE|
+
+1.-Devo generare 16 bombe e inserirla nei quadrati in modo randomico
+1.1.-Non potranno avere lo stesso numero e il pattern cambia ogni volta che attiviamo una nuova partita
+1.1.1.-Utilizzo Math.Random e CICLE WHILE, moltiplichiamo fino a 100 + 1, se non è presente il numero generato random
+       lo butto nell'array, altrimenti vado avanti
+1.1.2.-Quando l'array raggiunge lunghezza 16, finisce il ciclo
+
+2.-L'utente clicca una casella IF il numero è presente nella lista dei numeri generati, abbiamo calpestato una bomba
+2.1.-La cella si colora di rosso e la partita termina
+
+3.-ELSE la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle
+3.1.-Ogni volta che il giocatore clicca una cella azzurra diversa dalla precendente, aumenta il punteggio
+
+4.-Creo un LET con score = 0
+4.1.-Quando viene cliccata una cella azzurra score++
+
+5.-La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti, 
+   ovvero, quando ha rivelato tutte le celle che non sono bombe
+5.1.-Al termine della partita il software deve comunicare con ALERT il punteggio, cioè il numero di volte che l’utente ha cliccato 
+     su una cella che non era una bomba
+5.2.-IF il giocatore ha perso la partita ALERT "Hai perso!" + il punteggio
+5.3.-IF il giocatore ha vinto la partita ALERT "Hai vinto!" + il punteggio
